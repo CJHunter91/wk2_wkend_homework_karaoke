@@ -21,6 +21,7 @@ class Runner
         when "add"; puts create_guest
         when "help"; help
         when "rem"; puts remove
+        when "song"; puts create_song 
         when "q"; break
       end
     end
@@ -49,6 +50,16 @@ class Runner
     @room.remove_guest
     puts "#{guest_name} has left the room."
 
+  end
+
+  def create_song
+    puts "What is the name of the song?"
+    name = gets.chomp
+    puts "Who made the song?"
+    artist = gets.chomp
+    song = Song.new(name, artist)
+    @room.add_song(song)
+    puts "You added #{song.name} to the rooms playlist."
   end
 
   def help
