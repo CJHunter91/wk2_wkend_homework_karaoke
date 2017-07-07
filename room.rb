@@ -9,10 +9,10 @@ class Room
   end
 
   def add_guest(guest_obj)
-    @guests <<  guest_obj if !too_many_guests
+    @guests <<  guest_obj if !too_many_guests? && take_entry_fee(guest_obj)
   end
 
-  def too_many_guests
+  def too_many_guests?
     return true if @guests.count > @limit
     return false
   end
@@ -26,7 +26,11 @@ class Room
   end
 
   def take_entry_fee(guest_obj)
-    guest_obj.money -= @entry_fee
-    @till += @entry_fee
+    if (guest_obj.money >= @entry_fee)
+      guest_obj.money -= @entry_fee
+      @till += @entry_fee
+      return true
+    end
+    return false
   end
 end

@@ -45,7 +45,7 @@ class TestRoom < MiniTest::Test
   end
 
   def test_too_many_guests
-    assert_equal(true, @room2.too_many_guests)
+    assert_equal(true, @room2.too_many_guests?)
   end
 
   def test_too_many_guests__no_guest_added
@@ -57,13 +57,22 @@ class TestRoom < MiniTest::Test
   def test_take_entry_fee__can_afford
     current_wallet = @guest5.money
     expected_till = @room1.till + @room1.entry_fee
-    @room1.take_entry_fee(@guest5)
     expected_wallet = current_wallet - @room1.entry_fee
-    #test person money is updated
+    
+    @room1.take_entry_fee(@guest5)
+    #test guest money is updated
     assert_equal(expected_wallet, @guest5.money)
     #test room1 till is updated
-
     assert_equal(expected_till, @room1.till)
+  end
+
+  def test_take_entry_fee__can_not_afford
+    @guest5.money = 5
+    current_wallet = @guest5.money
+
+    @room1.take_entry_fee(@guest5)
+    assert_equal(current_wallet, @guest5.money)
+
   end
 
 end
