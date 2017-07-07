@@ -21,10 +21,9 @@ class TestRoom < MiniTest::Test
   end
 
   def test_add_guest
-    old_count = @room1.guests.count
     new_guest = Guest.new("John")
     @room1.add_guest(new_guest)
-    assert_equal(old_count + 1, @room1.guests.count)
+    assert_equal(true, @room1.guests.include?(new_guest))
 
   end
 
