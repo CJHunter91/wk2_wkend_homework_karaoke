@@ -32,6 +32,14 @@ class TestRoom < MiniTest::Test
 
   end
 
+  def test_add_guest__cant_afford
+    new_guest = Guest.new("John")
+    new_guest.money = 5
+    @room1.add_guest(new_guest)
+    assert_equal(false, @room1.guests.include?(new_guest))
+
+  end
+
   def test_remove_guest
     guest_count = @room1.guests.count
     @room1.remove_guest
