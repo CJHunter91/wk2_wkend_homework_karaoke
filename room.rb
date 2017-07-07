@@ -9,7 +9,9 @@ class Room
   end
 
   def add_guest(guest_obj)
-    @guests <<  guest_obj if !too_many_guests? && take_entry_fee(guest_obj)
+    condition = !too_many_guests? && take_entry_fee(guest_obj)
+    @guests <<  guest_obj if condition
+    return true if condition
   end
 
   def too_many_guests?
