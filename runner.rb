@@ -20,6 +20,7 @@ class Runner
       case input.downcase
         when "add"; puts create_guest
         when "help"; help
+        when "rem"; remove
         when "q"; break
       end
     end
@@ -27,17 +28,22 @@ class Runner
       
 
   def create_guest()
+    cant_afford = "That guest can't afford entry into this fancy establishment"
+    too_many = "There are too many guests in the room. Remove one first"
+
     return too_many if @room.too_many_guests?
     puts "Enter guest name."
     input = gets.chomp
 
     guest = Guest.new(input)
-    too_many = "There are too many guests in the room. Remove one first"
-    cant_afford = "That guest can't afford entry into this fancy establishment"
     gained_entry = "#{guest.name} has joined the room."
     puts gained_entry if @room.add_guest(guest)
     puts cant_afford if !@room.take_entry_fee(guest)
 
+  end
+
+  def remove_guest
+    
   end
 
   def help

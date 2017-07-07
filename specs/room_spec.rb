@@ -56,6 +56,11 @@ class TestRoom < MiniTest::Test
     assert_equal(true, @room2.too_many_guests?)
   end
 
+  def test_no_guest
+    room = Room.new
+    assert_equal(true, room.no_guests)
+  end
+
   def test_too_many_guests__no_guest_added
     current_guests = @room1.guests
     @room1.add_guest(@guest5)

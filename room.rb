@@ -14,6 +14,10 @@ class Room
     return true if condition
   end
 
+  def no_guests()
+    return true if @guests.count == 0 
+  end
+
   def too_many_guests?
     return true if @guests.count > @limit
     return false
