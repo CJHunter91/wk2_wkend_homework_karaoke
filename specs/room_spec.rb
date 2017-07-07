@@ -11,8 +11,13 @@ class TestRoom < MiniTest::Test
   def setup
     @guest1 = Guest.new('Chris')
     @guest2 = Guest.new('Stephen')
+    @guest3 = Guest.new('Steph')
+    @guest4 = Guest.new('Roman')
+    @guest5 = Guest.new('Holly')
     @guests = [@guest1, @guest2]
+    @guests2 = [@guest1, @guest2, @guest3, @guest4, @guest5]
     @room1 = Room.new(@guests)
+    @room2 = Room.new(@guests2)
   end
 
 
@@ -39,7 +44,9 @@ class TestRoom < MiniTest::Test
     assert_equal(dance, @room1.songs[dance.name])
   end
 
-
+  def test_too_many_guests
+    assert_equal(true, @room2.too_many_guests)
+  end
 
 
 
