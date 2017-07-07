@@ -2,7 +2,7 @@ class Room
   attr_reader :guests, :songs, :entry_fee, :till
   def initialize(guests = [])
     @guests = guests
-    @songs = {}
+    @songs = []
     @limit = 4
     @entry_fee = 10
     @till = 0
@@ -28,7 +28,13 @@ class Room
   end
 
   def add_song(song_obj)
-    @songs[song_obj.name] = song_obj
+    @songs << song_obj
+  end
+
+  def check_song
+    current_song = @songs[0]
+    @songs.shuffle!
+    return current_song
   end
 
   def take_entry_fee(guest_obj)
