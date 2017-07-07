@@ -14,7 +14,7 @@ class TestRoom < MiniTest::Test
     @guest3 = Guest.new('Steph')
     @guest4 = Guest.new('Roman')
     @guest5 = Guest.new('Holly')
-    @guests = [@guest1, @guest2]
+    @guests = [@guest1, @guest2, @guest3]
     @guests2 = [@guest1, @guest2, @guest3, @guest4, @guest5]
     @room1 = Room.new(@guests)
     @room2 = Room.new(@guests2)
@@ -48,6 +48,11 @@ class TestRoom < MiniTest::Test
     assert_equal(true, @room2.too_many_guests)
   end
 
+  def test_too_many_guests__no_guest_added
+    current_guests = @room1.guests
+    @room1.add_guest(@guest5)
+    assert_equal(current_guests, @room1.guests)
+  end
 
 
 end

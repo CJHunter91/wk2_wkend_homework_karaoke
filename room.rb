@@ -8,7 +8,7 @@ class Room
   end
 
   def add_guest(guest)
-    @guests <<  guest
+    @guests <<  guest if !too_many_guests
   end
 
   def too_many_guests
