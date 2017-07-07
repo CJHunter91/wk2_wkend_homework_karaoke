@@ -35,9 +35,10 @@ class Runner
 
     return too_many if @room.too_many_guests?
     puts "Enter guest name."
-    input = gets.chomp
-
-    guest = Guest.new(input)
+    name = gets.chomp
+    puts "Enter their favourite song."
+    favourite = gets.chomp
+    favourite != '' ? guest = Guest.new(name, favourite) : guest = Guest.new(name)
     gained_entry = "#{guest.name} has joined the room."
     puts gained_entry if @room.add_guest(guest)
     puts cant_afford if !@room.take_entry_fee(guest)
@@ -67,6 +68,10 @@ class Runner
     current_song = @room.check_song
     puts "This room is currently playing #{current_song.name} by #{current_song.artist}"
     #place puts here for any guests that like this song.
+    guests = @room.guests.select{|guest| guest.favourite == current_song.name}
+    return if guests.count == 0
+    puts "Guests #{guests.map!{|guest| guest.name}.join(',')} scream with excitement at their favourite song!"
+    puts "Everyone loves Journey" if current_song.name == "Dont stop believing"
   end
 
   def help
@@ -75,7 +80,7 @@ class Runner
     puts "Add a guest(add)"
     puts "Remove a guest(rem)"
     puts "Add a song(song)"
-    puts "Plat next song in playlist(next)"
+    puts "Play next song in playlist(next)"
     puts "Quit the app(q)"
     puts "Get this message(help)"
   end
