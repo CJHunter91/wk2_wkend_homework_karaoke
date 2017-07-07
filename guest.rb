@@ -1,5 +1,5 @@
 class Guest
-  attr_reader :money
+  attr_accessor :money
   def initialize(name)
     @name = name
     @money = 20

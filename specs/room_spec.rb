@@ -54,5 +54,16 @@ class TestRoom < MiniTest::Test
     assert_equal(current_guests, @room1.guests)
   end
 
+  def test_take_entry_fee__can_afford
+    current_wallet = @guest5.money
+    expected_till = @room1.till + @room1.entry_fee
+    @room1.take_entry_fee(@guest5)
+    expected_wallet = current_wallet - @room1.entry_fee
+    #test person money is updated
+    assert_equal(expected_wallet, @guest5.money)
+    #test room1 till is updated
+
+    assert_equal(expected_till, @room1.till)
+  end
 
 end
