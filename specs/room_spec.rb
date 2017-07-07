@@ -34,8 +34,9 @@ class TestRoom < MiniTest::Test
   end
 
   def test_add_song
-    new_song = Song.new("Dance", "Fallout")
-
+    dance = Song.new("Dance", "Fallout")
+    @room1.add_song(dance)
+    assert_equal(dance, @room1.songs[dance.name])
   end
 
 
