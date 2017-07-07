@@ -20,7 +20,7 @@ class Runner
       case input.downcase
         when "add"; puts create_guest
         when "help"; help
-        when "rem"; remove
+        when "rem"; puts remove
         when "q"; break
       end
     end
@@ -42,8 +42,13 @@ class Runner
 
   end
 
-  def remove_guest
-    
+  def remove
+    none = "There are no guests to remove"
+    return none if @room.no_guests?
+    guest_name = @room.guests[0].name
+    @room.remove_guest
+    puts "#{guest_name} has left the room."
+
   end
 
   def help

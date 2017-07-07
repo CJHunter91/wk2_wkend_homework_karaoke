@@ -14,7 +14,7 @@ class Room
     return true if condition
   end
 
-  def no_guests()
+  def no_guests?()
     return true if @guests.count == 0 
   end
 
