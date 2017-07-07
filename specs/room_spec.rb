@@ -52,7 +52,7 @@ class TestRoom < MiniTest::Test
     assert_equal(true, @room1.songs.include?(dance))
   end
 
-  def test_check_current_song
+  def test_check_song
     dance = Song.new("Dance", "Fallout")
     happy = Song.new("happy", "pharrel")
     @room1.add_song(dance)
@@ -61,6 +61,15 @@ class TestRoom < MiniTest::Test
     assert_equal(dance, song)
   end
 
+  def test_check_song__shuffles
+    dance = Song.new("Dance", "Fallout")
+    happy = Song.new("happy", "pharrel")
+    @room1.add_song(dance)
+    @room1.add_song(happy)
+    @room1.check_song
+    song = @room1.check_song
+    assert_equal(happy, song)
+  end
 
   def test_too_many_guests
     assert_equal(true, @room2.too_many_guests?)

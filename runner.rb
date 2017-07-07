@@ -22,6 +22,7 @@ class Runner
         when "help"; help
         when "rem"; puts remove
         when "song"; puts create_song 
+        when "next"; puts next_song
         when "q"; break
       end
     end
@@ -62,12 +63,18 @@ class Runner
     puts "You added #{song.name} to the rooms playlist."
   end
 
+  def next_song
+    puts "This room is currently playing #{@room.check_song}"
+    #place puts here for any guests that like this song.
+  end
+
   def help
     puts "You can do the following:"
     puts "---------"
     puts "Add a guest(add)"
     puts "Remove a guest(rem)"
     puts "Add a song(song)"
+    puts "Plat next song in playlist(next)"
     puts "Quit the app(q)"
     puts "Get this message(help)"
   end

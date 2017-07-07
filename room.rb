@@ -33,7 +33,7 @@ class Room
 
   def check_song
     current_song = @songs[0]
-    @songs.shuffle!
+    @songs.rotate!
     return current_song
   end
 
