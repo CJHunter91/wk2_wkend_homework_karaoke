@@ -27,8 +27,16 @@ class TestRoom < MiniTest::Test
 
   end
 
+  def test_remove_guest
+    guest_count = @room1.guests.count
+    @room1.remove_guest
+    assert_equal(guest_count - 1, @room1.guests.count)
+  end
 
+  def test_add_song
+    new_song = Song.new("Dance", "Fallout")
 
+  end
 
 
 
