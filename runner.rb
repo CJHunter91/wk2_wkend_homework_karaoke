@@ -64,7 +64,8 @@ class Runner
   end
 
   def next_song
-    puts "This room is currently playing #{@room.check_song}"
+    current_song = @room.check_song
+    puts "This room is currently playing #{current_song.name} by #{current_song.artist}"
     #place puts here for any guests that like this song.
   end
 
