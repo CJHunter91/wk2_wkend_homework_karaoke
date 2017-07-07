@@ -8,9 +8,17 @@ require_relative('../guest.rb')
 
 class TestRoom < MiniTest::Test
 
+  def setup
+    @guest1 = Guest.new('Chris')
+    @guest2 = Guest.new('Stephen')
+    @guests = [@guest1, @guest2]
+    @room1 = Room.new(@guests)
+  end
 
 
-
+  def test_is_room()
+    assert_equal(@room1.class, Room.new(@guests).class)
+  end
 
 
 
