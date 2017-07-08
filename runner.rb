@@ -39,9 +39,10 @@ class Runner
     puts "Enter their favourite song."
     favourite = gets.chomp
     favourite != '' ? guest = Guest.new(name, favourite) : guest = Guest.new(name)
+    
+    return cant_afford if !@room.take_entry_fee(guest)
     gained_entry = "#{guest.name} has joined the room."
     puts gained_entry if @room.add_guest(guest)
-    puts cant_afford if !@room.take_entry_fee(guest)
 
   end
 

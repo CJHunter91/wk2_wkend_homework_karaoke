@@ -3,7 +3,7 @@ class Guest
   attr_accessor :money
   def initialize(name, favourite = "Dont stop believing")
     @name = name
-    @money = 20
+    @money = (5..40).to_a.sample
     @favourite = favourite
   end
 end

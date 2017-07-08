@@ -14,6 +14,11 @@ class TestRoom < MiniTest::Test
     @guest3 = Guest.new('Steph')
     @guest4 = Guest.new('Roman')
     @guest5 = Guest.new('Holly')
+    @guest1.money = 20
+    @guest2.money = 20
+    @guest3.money = 20
+    @guest4.money = 20
+    @guest5.money = 20
     @guests = [@guest1, @guest2, @guest3]
     @guests2 = [@guest1, @guest2, @guest3, @guest4, @guest5]
     @room1 = Room.new(@guests)
