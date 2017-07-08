@@ -8,6 +8,10 @@ class BarTab
    !@guest_tabs[guest] ? @guest_tabs[guest] = amount : @guest_tabs[guest] += amount 
   end
 
+  #function which iterates through guest tabs
+  #find_and_add_to_tab
+
+
 
 
 
