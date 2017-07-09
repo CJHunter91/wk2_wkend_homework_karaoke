@@ -10,9 +10,9 @@ class BarTab
 
   #function which iterates through guest tabs
   def find_tab(guest_obj)
-    guest = @guest_tabs.find{|guest_tab| guest_tab == guest_obj}
+    tab_keys = @guest_tabs.keys
+    guest = tab_keys.find{|guest_tab| guest_tab == guest_obj}
     return guest.nil? ? false : guest
-    #if no customer potentially return false and ask if you want to create a tab
   end
 
 
