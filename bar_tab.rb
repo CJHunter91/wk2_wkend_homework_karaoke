@@ -4,8 +4,12 @@ class BarTab
     @guest_tabs = {}
   end
 
-  def add_to_customer_tab(guest, amount)
-   @guest_tabs[guest] += amount if @guest_tabs[guest]
+  def add_to_customer_tab(guest, amount)   
+    if @guest_tabs[guest] 
+      @guest_tabs[guest] += amount
+    else
+      raise "No such customer in hash"
+    end
   end
 
   #function which iterates through guest tabs

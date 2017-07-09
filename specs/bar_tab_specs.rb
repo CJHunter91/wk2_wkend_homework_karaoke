@@ -27,18 +27,20 @@ class TestBarTab < MiniTest::Test
 
   end
 
-  # def test_add_to_customer_tab__customer_not_added
-  #   amount = 10
-  #   @room_tab.add_to_customer_tab(@guest1, amount)
-  #   assert_equal(amount, @room_tab.guest_tabs[@guest1])
-  # end
+  def test_add_to_customer_tab__customer_not_added
+    amount = 10
+    assert_raises RuntimeError do
+      @room_tab.add_to_customer_tab(@guest1, amount)
+    end
 
-  # def test_add_to_customer_tab__customer_exists
-  #   amount = 10
-  #   @room_tab.add_to_customer_tab(@guest1, amount)
-  #   @room_tab.add_to_customer_tab(@guest1, amount)
-  #   assert_equal(20 , @room_tab.guest_tabs[@guest1])
-  # end
+  end
+
+  def test_add_to_customer_tab__customer_exists
+    amount = 10
+    @room_tab.make_tab(@guest1, amount)
+    @room_tab.add_to_customer_tab(@guest1, amount)
+    assert_equal(20 , @room_tab.guest_tabs[@guest1])
+  end
 
   def test_find_tab__doesnt_exist
     assert_equal(false, @room_tab.find_tab(@guest3))
