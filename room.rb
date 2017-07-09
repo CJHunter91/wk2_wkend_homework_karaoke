@@ -1,6 +1,7 @@
 require_relative('./bar_tab.rb')
 class Room
   attr_reader :guests, :songs, :entry_fee, :till
+  attr_accessor :bar_tab
   def initialize(guests = [])
     @guests = guests
     @songs = []
@@ -34,9 +35,11 @@ class Room
   end
 
   def check_song
-    current_song = @songs[0]
-    @songs.rotate!
-    return current_song
+    if @songs != []
+      current_song = @songs[0]
+      @songs.rotate!
+      return current_song
+    end
   end
 
   def take_entry_fee(guest_obj)

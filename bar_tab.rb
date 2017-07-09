@@ -19,7 +19,7 @@ class BarTab
     return guest.nil? ? false : guest
   end
 
-  def make_tab(guest_obj, amount)
+  def make_tab(guest_obj, amount =0)
     @guest_tabs[guest_obj] = amount 
   end
 

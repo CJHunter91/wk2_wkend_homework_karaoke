@@ -61,6 +61,6 @@ class TestBarTab < MiniTest::Test
     assert_equal(amount, @room_tab.get_tab_value(@guest1))
   end
 
-
+  #could add exception test for if get_tab_value__doesnt_exist
 
 end
