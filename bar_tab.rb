@@ -12,7 +12,7 @@ class BarTab
     end
   end
 
-  #function which iterates through guest tabs
+  #function which iterates through guest tabs and finds the given guest
   def find_tab(guest_obj)
     tab_keys = @guest_tabs.keys
     guest = tab_keys.find{|guest_tab| guest_tab == guest_obj}
@@ -23,6 +23,9 @@ class BarTab
     @guest_tabs[guest_obj] = amount 
   end
 
+  def get_tab_value(guest_obj)
+    return @guest_tabs[guest_obj] if find_tab(guest_obj)
+  end
 
 
 

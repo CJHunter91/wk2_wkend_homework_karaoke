@@ -55,7 +55,11 @@ class TestBarTab < MiniTest::Test
     assert_equal(@guest2, @room_tab.find_tab(@guest2))
   end
 
-
+  def test_get_tab_value
+    amount = 10
+    @room_tab.make_tab(@guest1, amount)
+    assert_equal(amount, @room_tab.get_tab_value(@guest1))
+  end
 
 
 
