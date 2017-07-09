@@ -5,7 +5,7 @@ class BarTab
   end
 
   def add_to_customer_tab(guest, amount)
-   !@guest_tabs[guest] ? @guest_tabs[guest] = amount : @guest_tabs[guest] += amount 
+   @guest_tabs[guest] += amount if @guest_tabs[guest]
   end
 
   #function which iterates through guest tabs
@@ -15,10 +15,9 @@ class BarTab
     return guest.nil? ? false : guest
   end
 
-
-
-
-
+  def make_tab(guest_obj, amount)
+    @guest_tabs[guest_obj] = amount 
+  end
 
 
 

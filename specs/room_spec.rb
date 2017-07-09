@@ -112,4 +112,8 @@ class TestRoom < MiniTest::Test
 
   end
 
+  # def test_make_guest_tab
+  #   @room1.make_guest_tab(guest_obj)
+  # end
+
 end

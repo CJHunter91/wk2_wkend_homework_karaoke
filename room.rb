@@ -1,3 +1,4 @@
+require_relative('./bar_tab.rb')
 class Room
   attr_reader :guests, :songs, :entry_fee, :till
   def initialize(guests = [])
@@ -6,7 +7,7 @@ class Room
     @limit = 4
     @entry_fee = 10
     @till = 0
-    #add bar tab obj
+    @bar_tab = BarTab.new
   end
 
   def add_guest(guest_obj)
@@ -46,6 +47,7 @@ class Room
     end
     return false
   end
+
 
   #function which removes amount from guest cash if no tab
   #or removes when the guest leaves
