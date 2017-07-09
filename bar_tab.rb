@@ -8,7 +8,7 @@ class BarTab
     if @guest_tabs[guest] 
       @guest_tabs[guest] += amount
     else
-      raise "No such customer in hash"
+      raise "No such customer #{guest} in hash"
     end
   end
 

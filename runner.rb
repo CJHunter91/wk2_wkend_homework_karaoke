@@ -95,6 +95,18 @@ class Runner
     end
   end
 
+  def buy_drink
+    puts "Who do you want to buy a drink for?"
+    @room.guests.each{|guest| puts guest.name}
+    guest = gets.chomp
+    guest = @room.guests.find{|guest_obj| guest_obj.name == guest}
+    guest = @room.bar_tab.find_tab(guest)
+    @room.bar_tab.add_to_customer_tab(guest, 5)
+    tab_value = @room.bar_tab.get_tab_value(guest)
+    puts guest.name + "'s outstanding tab is #{tab_value}"
+
+  end
+
   def help
     puts "You can do the following:"
     puts "---------"
