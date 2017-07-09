@@ -9,7 +9,13 @@ class BarTab
   end
 
   #function which iterates through guest tabs
-  #find_and_add_to_tab
+  def find_and_add_to_tab(guests, guest_name, amount)
+    guest = guests.find{|guest_obj| guest_obj.name == guest_name}
+    add_to_customer_tab(guest,amount)
+    #if no customer potentially return false and ask if you want to create a tab
+  end
+
+
 
 
 

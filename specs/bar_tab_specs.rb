@@ -41,7 +41,10 @@ class TestBarTab < MiniTest::Test
   end
 
   def test_find_and_add_to_tab
-    
+    @room_tab.find_and_add_to_tab(@room1.guests, "Steph", 10)
+
+    assert_equal(10, @room_tab.guest_tabs[@guest3])
+
   end
 
 
